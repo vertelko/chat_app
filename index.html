@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <title>ChatApp</title>
+    <style>
+        .username{
+            padding-top: 10px; 
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .message{
+            padding-left: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center pt-4"> ChatApp </h3>
+        <div class="row pt-4">
+            <div class="col-md-8 offset-md-2 col-sm-12">
+                <div id="chat">
+                    <div class="card" style="overflow-y: scroll;height: 450px;resize: none;">
+                        <div id="messages" class="card-block"></div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="row pt-4">
+            <div class="col-md-6 ml-auto">
+                <textarea id="textarea" class="form-control" placeholder="Enter message..."></textarea>
+            </div>
+            <div class="col-md-2 mr-auto">
+                <button id="send" class="btn-lg btn-primary" style="width: 100%">Send</button>
+            </div>   
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
