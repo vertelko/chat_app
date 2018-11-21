@@ -2,13 +2,27 @@
 var element = function(id){
     return document.getElementById(id);
 }
-// Get Elements
-var username = prompt("Please enter your 'username':");
+
+// Take New User Function
+var user = document.getElementById("newUser");
+user.addEventListener("click", function(){
+    var newUser = String(prompt("Please enter your 'username':")); 
+    if(!newUser || newUser == ""){
+      localStorage["username"] = "undefinedUser";  
+    }else{
+      localStorage["username"] = newUser;
+    } 
+    //document.getElementById("user").innerHTML = localStorage["username"];  
+}, false);
+
+// Get Username, Messages And So On 
+if(!localStorage.getItem('username')){
+    localStorage.setItem('username', prompt("Please enter your 'username':")); 
+    //document.getElementById("user").innerHTML = localStorage["username"];   
+}
 var messages = element('messages');
 var textarea = element('textarea');
 var sendBtn = element('send');
-//If Empty Username
-if(username == '' ) username = 'lazyUSER';
 // Connect to socket.io
 var socket = io.connect('http://127.0.0.1:4000');
 // Check for connection
@@ -40,7 +54,7 @@ if(socket !== undefined){
         if(event.which === 13 && event.shiftKey == false){
             // Emit to server input
             socket.emit('input', {
-                name:username,
+                name:localStorage["username"],
                 message:textarea.value
             });
             textarea.value = '';
@@ -48,14 +62,14 @@ if(socket !== undefined){
         }
     })
     // Handle Input2
-    sendBtn.addEventListener('click', function(){
+    /*sendBtn.addEventListener('click', function(){
         socket.emit('input', {
-            name:username,
+            name:localStorage["username"],
             message:textarea.value
         });
         textarea.value = '';
         event.preventDefault();
-    });
+    });*/
     // Clear Message
     socket.on('cleared', function(){
         messages.textContent = '';
