@@ -11,14 +11,12 @@ user.addEventListener("click", function(){
       localStorage["username"] = "undefinedUser";  
     }else{
       localStorage["username"] = newUser;
-    } 
-    //document.getElementById("user").innerHTML = localStorage["username"];  
+    }   
 }, false);
 
 // Get Username, Messages And So On 
 if(!localStorage.getItem('username')){
     localStorage.setItem('username', prompt("Please enter your 'username':")); 
-    //document.getElementById("user").innerHTML = localStorage["username"];   
 }
 var messages = element('messages');
 var textarea = element('textarea');
@@ -61,15 +59,6 @@ if(socket !== undefined){
             event.preventDefault();
         }
     })
-    // Handle Input2
-    /*sendBtn.addEventListener('click', function(){
-        socket.emit('input', {
-            name:localStorage["username"],
-            message:textarea.value
-        });
-        textarea.value = '';
-        event.preventDefault();
-    });*/
     // Clear Message
     socket.on('cleared', function(){
         messages.textContent = '';

@@ -1,0 +1,14 @@
+.username{
+    padding-top: 10px; 
+    font-size: 18px;
+    font-weight: bold;
+}
+.message{
+    padding-left: 20px;
+    font-size: 18px;
+}
+.allmessage{
+    overflow-y: scroll;
+    height: 450px;
+    resize: none;
+}
